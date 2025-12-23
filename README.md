@@ -28,6 +28,8 @@ print(dataset["test"][0])
 
 Conversational agents have traditionally been developed for either task-oriented dialogue (TOD) or open-ended chitchat, with limited progress in unifying the two. Yet, real-world conversations naturally involve fluid transitions between these modes. To address this gap, we introduce TACT (TOD-And-Chitchat Transition), a dataset designed for transition-aware dialogue modeling that incorporates structurally diverse and integrated mode flows. TACT supports both user- and agent-driven mode switches, enabling robust modeling of complex conversational dynamics.To evaluate an agent’s ability to initiate and recover from mode transitions, we propose two new metrics—Switch and Recovery.Models trained on TACT outperform baselines in both intent detection and mode transition handling. Moreover, applying Direct Preference Optimization (DPO) to TACT-trained models yields additionalgains, achieving 75.74% joint mode-intent accuracy and a 70.1% win rate against GPT-4o in human evaluation.These results demonstrate that pairing structurally diverse data with DPO enhances response quality and transition control, paving the way for more proactive and transition-aware conversational agents.
 
+![Representative Figure](docs/main.png)
+
 ---
 ## Repository Structure
 ```
