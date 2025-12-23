@@ -34,12 +34,12 @@ Conversational agents have traditionally been developed for either task-oriented
 ## Repository Structure
 ```
 ./
-├── datasets
-│   ├── TACT_multiwoz
+├── datasets/
+│   ├── TACT_multiwoz/
 │   │   ├── test.jsonl
 │   │   ├── train.jsonl
 │   │   └── validation.jsonl
-│   └── TACT_slurp
+│   └── TACT_slurp/
 │       ├── validation.jsonl
 │       ├── test.jsonl
 │       └── train.jsonl
