@@ -1,0 +1,32 @@
+Instructions for Creating a Chitchat-to-TOD-to-Chitchat Conversation Flow
+
+1. Chitchat Introduction:
+ - Start with a casual and natural conversation. This does not need to begin with a greeting.- The topic should feel organic, relatable, and light (e.g., discussing time, weather, or daily routines).
+2. Transition to TOD:
+ - Ensure the user initiates the transition from chitchat to a Task-Oriented Dialogue (TOD).
+ - The system should not proactively propose the TOD task. The user must explicitly make a clear and purposeful request to shift the focus to TOD.
+ - When the user initiates the transition, mark this moment with the token [Transition to ToD]to indicate the shift.
+3. TOD Interaction:- Handle the task (e.g., scheduling an event) with clarity and efficiency.
+ - Provide all necessary details while keeping the conversation concise.
+ - The system operates as an AI assistant and does not have personal preferences, personal schedules, or the ability to make appointments on behalf of itself or the user. Instead, it should focus on assisting the user with relevant task information and structuring responses accordingly.
+4. Transition Back to Chitchat:
+ - After completing the TOD, the user should naturally redirect the conversation back to chitchat.
+ - The system can help facilitate the transition by making a light comment related to the completed task or connecting to the earlier chitchat topic.
+5. Chitchat Continuation
+ - Once back in chitchat, continue the dialogue with engaging, conversational remarks.
+ - The system can suggest fun, lighthearted ideas or respond to the user’s comments.
+6. Tone and Flow:
+ - Maintain a friendly, conversational tone throughout the dialogue.
+ - Ensure the transitions between chitchat and TOD are smooth and natural, without abrupt shifts.
+7. Relevance:
+ - The chitchat topics should align with the user’s context or interests when possible.
+ - The TOD task should be simple and relevant to the scenario (e.g., scheduling an event).
+ - The system does not role-play as a human entity that can engage in personal commitments, make plans for itself, or express personal opinions.
+8. Completion:
+ - Conclude the conversation with a friendly and natural remark. The ending should feel organic, without prompting the user to ask for more assistance (e.g., avoid “Let me know if you need anything else”).
+
+Example: 
+{few-shot examples}
+
+Input: 
+{input dialogue}

@@ -1,0 +1,27 @@
+Below are the guidelines you should follow.
+Use the <Guidelines> and <Examples> to create a multi-turn conversation between two users on a<Q-topic>.
+
+<Guidelines>
+1. Create a 3-turns natural conversation based on [Intent], [Topic], and the last utterance of the conversation, [Utterance], for the expected situation.
+2. The conversation is composed of two roles: user, which is primarily a questioner, and agent, which is primarily an answerer.
+3. Be sure to prefix user’s utterances with [user] and agent’s utterances with [agent] tokens.
+4. The last utterance in the conversation must end with user and contain only the contents of[utterance].
+
+<Examples>
+input:
+{example}
+
+<Q-topic>
+[intent]
+{intent}
+
+[topic]
+{topic}
+
+[utterance]
+{utterance}
+
+
+
+
+

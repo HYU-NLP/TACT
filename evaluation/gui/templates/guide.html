@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>TACT Human Evaluation 안내</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 40px;
+      line-height: 1.6;
+      color: #333;
+      background-color: #fafafa;
+    }
+
+    h1,
+    h2 {
+      color: #2c3e50;
+    }
+
+    ul,
+    ol {
+      padding-left: 20px;
+    }
+
+    ul li,
+    ol li {
+      margin-bottom: 8px;
+    }
+
+    a {
+      color: #2980b9;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    strong {
+      font-weight: 600;
+    }
+
+    p {
+      max-width: 800px;
+    }
+
+    .chat-history {
+      max-width: 800px;
+      margin-top: 20px;
+      border: 1px solid #ddd;
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 6px;
+      font-size: 14px;
+      line-height: 1.4;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .message {
+      display: flex;
+      flex-direction: column;
+      max-width: 70%;
+      padding: 8px 12px;
+      border-radius: 6px;
+      word-wrap: break-word;
+    }
+
+    .user-message {
+      align-self: flex-end;
+      background-color: #dbeafe;
+      border: 1px solid #90cdf4;
+    }
+
+    a .assistant-message {
+      align-self: flex-start;
+      background-color: #e6fffa;
+      border: 1px solid #81e6d9;
+    }
+  </style>
+</head>
+
+<body>
+  <div style="max-width: 900px; margin: auto;">
+    <p style="text-align: right; font-size: 0.9em;">
+      English version available: <a href="/docs/guide-en">View in English</a>
+    </p>
+    <h1>TACT Human Evaluation 실험 안내</h1>
+    <p>
+      본 실험에서는 <strong>대화 생성 모델의 응답 품질</strong>을 비교 평가합니다.<br>
+      특히 <strong>기능성(Task-Oriented) 대화</strong>와 <strong>잡담(Chitchat)</strong> 사이의 <strong>전환(Transition)</strong>이 <br>
+      자연스럽게 이루어지는지를 중점적으로 살펴보고자 합니다.
+    </p>
+    <p>
+      기능성 대화란 예를 들어 <em>식당을 추천해줘</em>, <em>기차 시간 알려줘</em>와 같은 <strong>목적이 뚜렷한 요청</strong>을 포함하는 대화를 의미합니다.<br>
+      반면 잡담은 <em>오늘 날씨 좋지 않아?</em>, <em>요즘 무슨 영화가 재미있어?</em>처럼 <strong>정보 요청과 직접 관련이 없는 자연스러운 대화</strong>를 말합니다.<br>
+      전환(Transition)은 이 두 유형의 대화를 오가며 <strong>대화 흐름이 어색하지 않게 이어지는 방식</strong>을 의미합니다.<br>
+      예를 들어, <em>기차 시간을 알려달라</em>고 요청한 뒤 <em>기차 여행을 정말 좋아해</em>라고 대화를 시도하거나,<br>
+      혹은 <em>맛집을 추천해줘</em>라는 요청 후 <em>그냥 그 요리 내가 만들어볼까?</em>와 같이 대화를 자연스럽게 이어가는 방식입니다.<br>
+      전환이 반드시 일어나야 하는 것은 아니며, 정답이 있는 것도 아닙니다.<br>
+      하지만 다양한 상황에서 <strong>자연스러운 전환이 일어날 수 있다</strong>는 점을 염두에 두고, 대화 흐름을 풍부하게 구성해보세요.
+    </p>
+    <ul>
+      <li><a href="/exp1">Model EXP1</a></li>
+      <li><a href="/exp2">Model EXP2</a></li>
+    </ul>
+
+    <h2>1. 실험 흐름</h2>
+    <ol>
+      <li>모델 페이지에 접속한 후, 본인에게 배정된 시나리오 목록 중 하나를 선택하여 실험을 시작합니다. (최대 10개가 배정되며, 배정 리스트는 별도로 제공됩니다.)</li>
+      <li>상단에서 <strong>Guideline</strong>을 확인하세요.
+        해당 시나리오의 전체 흐름을 간략하게 보여주는 정보로, 총 몇 턴의 대화가 있었고 어떤 intent 전환이 있었는지 skeleton 형태로 요약되어 있습니다.
+        반드시 따를 필요는 없으며, 자유롭게 대화하되 참고 용도로 활용해주세요.</li>
+      <li>다양한 대화 유형을 실험하기 위해, <strong>단순 정보 요청이나 명령뿐 아니라</strong> <em>잡담(Chitchat)</em>도 시도해주세요. 예: 감정 표현, 현재 요청과 관련된
+        정보성격이 없는 질문, 기타 개인적 질문, 일상 대화 등.</li>
+      <li>중간에 표시된 과거 대화 기록(샘플)을 읽고 상황을 이해하세요.</li>
+      <li><strong>Assistant의 마지막 발화 이후</strong>부터는 사용자가 직접 대화를 이어나갑니다.</li>
+      <li>실제 사용자인 것처럼 자유롭게 입력하고, 모델의 응답을 평가하며 대화를 이어가세요.</li>
+      <li>대화가 충분히 진행되었다고 판단되면 <strong>Save</strong> 버튼을 눌러 기록을 저장하세요.</li>
+      <li>최소한 <strong>6턴</strong> 이상 주고받은 뒤, 즉 user가 sample 대화를 제외하고 6회 이상 입력한 후, 대화가 충분히 진행되었다고 판단되면
+        <strong>Save</strong> 버튼을 눌러 기록을 저장하세요.
+      </li>
+    </ol>
+
+    <button id="toggleBtn" onclick="toggleDialogue()" style="margin-top: 24px;">예시 대화 펼치기 ▼</button>
+    <div id="dialogueSection" style="display: none;">
+      <div class="chat-history" id="exampleDialogue">
+        <div class="message user-message">
+          <div class="message-role">USER</div>
+          <div class="message-content">Could you tell me whether there are any moderately priced Catalan restaurants?
+          </div>
+        </div>
+        <div class="message assistant-message">
+          <div class="message-role">ASSISTANT</div>
+          <div class="message-content">I was unable to find any moderately priced Catalan restaurants. Is there another
+            type of cuisine you would like to try?</div>
+        </div>
+        <div class="message user-message">
+          <div class="message-role">USER</div>
+          <div class="message-content">Yes, could we try one that serves British food?</div>
+        </div>
+        <div class="message assistant-message">
+          <div class="message-role">ASSISTANT</div>
+          <div class="message-content">I have more options of moderate British cuisine locales; any particular area
+            you’d prefer?</div>
+        </div>
+        <div class="message user-message">
+          <div class="message-role">USER</div>
+          <div class="message-content">No, the area doesn’t matter. I’d like to book a table for 7 on Sunday.</div>
+        </div>
+        <div class="message assistant-message">
+          <div class="message-role">ASSISTANT</div>
+          <div class="message-content">Okay. How about trying The Oak Bistro?</div>
+        </div>
+        <div class="message user-message">
+          <div class="message-role">USER</div>
+          <div class="message-content">That sounds good. Can you give me details?</div>
+        </div>
+        <div class="message assistant-message">
+          <div class="message-role">ASSISTANT</div>
+          <div class="message-content">The Oak Bistro is a cozy spot known for its traditional British dishes. They
+            offer a variety of options, including fish and chips, shepherd’s pie, and a selection of ales. Would you
+            like to proceed with the booking for 7 on Sunday?</div>
+        </div>
+        <div class="message user-message">
+          <div class="message-role">USER</div>
+          <div class="message-content">Yes and I also need to find a hotel to stay. It will be on the same day for 3
+            nights.</div>
+        </div>
+        <div class="message assistant-message">
+          <div class="message-role">ASSISTANT</div>
+          <div class="message-content">I will proceed with the restaurant booking for 7 on Sunday. After that, I can
+            help you find a hotel for your stay.<br>Please confirm the booking details for The Oak Bistro: 7 people on
+            Sunday.</div>
+        </div>
+        <div class="message user-message">
+          <div class="message-role">USER</div>
+          <div class="message-content">Yes.</div>
+        </div>
+        <div class="message assistant-message">
+          <div class="message-role">ASSISTANT</div>
+          <div class="message-content">Your table for 7 at The Oak Bistro has been successfully booked for
+            Sunday.<br>Now, let’s find a hotel for your stay. What location and price range do you prefer?</div>
+        </div>
+        <div class="message user-message">
+          <div class="message-role">USER</div>
+          <div class="message-content">I’m sorry, I didn’t mean to confuse. I was thinking of something else. Can I book
+            The Oak Bistro on Sunday for 7 people at 12:45?</div>
+        </div>
+        <div class="message assistant-message">
+          <div class="message-role">ASSISTANT</div>
+          <div class="message-content">Your table for 7 at The Oak Bistro has been booked for Sunday at 12:45.<br>Now,
+            would you like to find a hotel for your stay as well?</div>
+        </div>
+        <div class="message user-message">
+          <div class="message-role">USER</div>
+          <div class="message-content">Yes, I am also looking for a place to stay. I would like a 4-star hotel.</div>
+        </div>
+        <div class="message assistant-message">
+          <div class="message-role">ASSISTANT</div>
+          <div class="message-content">Your table for 7 at The Oak Bistro has been booked for Sunday at 12:45. Now,
+            let’s find a 4-star hotel for your stay. What location do you prefer?</div>
+        </div>
+        <div class="message user-message">
+          <div class="message-role">USER</div>
+          <div class="message-content">Somewhere near the hotel.</div>
+        </div>
+        <div class="message assistant-message">
+          <div class="message-role">ASSISTANT</div>
+          <div class="message-content">I will search for a 4-star hotel near The Oak Bistro for your stay. Please hold
+            on for a moment.</div>
+        </div>
+        <div class="message user-message">
+          <div class="message-role">USER</div>
+          <div class="message-content">Anywhere?</div>
+        </div>
+        <div class="message assistant-message">
+          <div class="message-role">ASSISTANT</div>
+          <div class="message-content">I will look for 4-star hotels available near The Oak Bistro. Please give me a
+            moment.</div>
+        </div>
+        <div class="message user-message">
+          <div class="message-role">USER</div>
+          <div class="message-content">I’ve waited long enough.</div>
+        </div>
+        <div class="message assistant-message">
+          <div class="message-role">ASSISTANT</div>
+          <div class="message-content">I apologize for the wait. Let me find a 4-star hotel near The Oak Bistro for your
+            stay. Please hold on.</div>
+        </div>
+      </div>
+    </div>
+    <h2>2. 주의사항</h2>
+    <ul>
+      <li>각 시나리오에 대해 <strong>EXP1과 EXP2 두 모델 모두</strong>를 사용하여 각각 대화를 진행해주세요. 이후 두 모델의 응답 품질을 전반적으로 비교할 예정입니다.</li>
+      <li>가능한 경우 <strong>대화 흐름의 자연스러움, 유용성, 맥락 반영 여부</strong> 등을 종합적으로 고려해주세요.</li>
+      <li>각 세션은 JSON 파일로 저장되며, 메타데이터가 함께 기록됩니다.</li>
+    </ul>
+
+    <h2>3. 실제 평가</h2>
+    <p>
+      모든 대화를 완료한 후, 아래 제공된 Google Sheet 링크를 통해 실제 평가를 진행해주세요.<br>
+      평가 항목은 다음과 같습니다:
+    </p>
+    </ul>
+    <ul>
+      <li>
+        <strong>SSI (Specificity, Sensibleness, Interestingness)</strong> – 아래 세 항목을 종합적으로 평가합니다:
+        <ul style="margin-top: 6px;">
+          <li><strong>Specificity</strong>: 응답이 구체적이고 내용이 풍부한지</li>
+          <li><strong>Sensibleness</strong>: 응답이 논리적으로 자연스럽고 문맥상 어색하지 않은지</li>
+          <li><strong>Interestingness</strong>: 응답이 지루하지 않고 흥미롭거나 인간적인 매력이 있는지</li>
+        </ul>
+      <li><strong>Transition Naturalness</strong> – 대화 흐름 전환의 자연스러움</li>
+    </ul>
+    </li>
+    <p>
+      (※ 평가용 링크: <a
+        href="https://docs.google.com/spreadsheets/d/1tQ9BkMi5oPqhTAGHWDOEBu4XYahWnCi0qNoTR1Bcy7o/edit?usp=sharing"
+        target="_blank">평가용 Google Sheet</a>)
+    </p>
+
+    <h2>4. 기타 기능</h2>
+    <ul>
+      <li><strong>Clear</strong> 버튼을 누르면 대화 초기화가 가능합니다.</li>
+      <li><strong>Download</strong> 버튼을 누르면 현재 대화 기록을 저장할 수 있습니다.</li>
+      <li>파일에는 시나리오 ID, 저장 시각, 사용 모델 등의 정보가 자동 포함됩니다.</li>
+      <li>모든 시나리오에 대한 대화를 완료한 후, 저장한 JSON 파일들을 Google Drive <strong>본인 이름</strong> 폴더 아래 업로드해주세요.</li>
+      <p>(제출 링크: <a href="https://drive.google.com/drive/folders/1Qd0-rG45QvHI7p0oJ6zXjoZWU0tW_jjc?usp=sharing"
+          target="_blank">파일 제출 드라이브</a>)</p>
+    </ul>
+
+    <p>
+      문의사항은 연구 책임자에게 알려주세요. (윤예진) <br>
+      실험에 참여해주셔서 감사합니다.
+    </p>
+  </div>
+</body>
+<script>
+  function toggleDialogue() {
+    const section = document.getElementById('dialogueSection');
+    const btn = document.getElementById('toggleBtn');
+    if (section.style.display === 'none') {
+      section.style.display = 'block';
+      btn.innerText = '예시 대화 접기 ▲';
+    } else {
+      section.style.display = 'none';
+      btn.innerText = '예시 대화 펼치기 ▼';
+    }
+  }
+</script>
+
+</html>

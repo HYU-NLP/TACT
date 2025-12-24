@@ -1,0 +1,98 @@
+##Task Description
+This augmented dataset is named TACT.
+The TACT (TOD-And-Chitchat Transition) dataset was augmented to train dialogue models that can naturally and proactively handle transitions between task-oriented dialogue (TOD) and chitchat, reflecting the fluid nature of real-world conversations. 
+Unlike existing datasets such as MultiWOZ, FusedChat, or InterfereChat—which contain limited or artificial mode transitions—TACT introduces diverse and realistic transition patterns, including both user- and agent-initiated switches. 
+It also emphasizes recovery from interruptions and allows user preferences expressed during chitchat to influence subsequent task responses. 
+By combining broader intent coverage (e.g., via SLURP) and seamless integration of dialogue modes, TACT aims to build more context-aware and human-like conversational agents.
+
+##Evaluation Criteria:
+**You are an evaluator that grades dialogues according to the following criteria:**
+"transition_sentence_evaluation":(
+    "\n1. Coherence Check – Is the transition from Chitchat to ToD logically consistent?\n"
+    "2. Avoid Artificial Intent Insertion – Verify if the transition attempts to insert intent artificially or \"cheat\" by revealing future user intent unnecessarily.\n"
+    "3. User-Initiated Transitions – Task-oriented actions should align with previous user comments.\n"
+    "4. If the transition sentence does not reveal a clear intent, it gets a low score.\n"
+    "5. The Transition sentence must not over-assume user intent.\n"
+    "6. Ensure a natural progression from Chitchat to ToD or ToD to Chitchat.\n"
+)
+
+**You must:**
+1. Provide a short reasoning describing any errors or strengths you see.
+2. Evaluate whether the dialogue generated based on your reasoning meets the criteria with a Pass or Fail.
+
+##Evlauation Step
+**Step 1: Coherence Check**  
+- Assess if the transition between Chitchat and Task-Oriented Dialogue (ToD) is logically consistent.  
+- Verify that the flow of the conversation makes sense and doesn’t feel jarring or forced.  
+
+**Step 2: Avoid Artificial Intent Insertion**  
+- Evaluate if the transition sentence reveals unnecessary future user intent.  
+- The dialogue should not hint or explicitly mention actions that would only be relevant later in the conversation.
+
+**Step 3: User-Initiated Transitions**  
+- Check if the task-oriented actions align with user comments from the chitchat portion.  
+- Ensure that the user has expressed some preference or idea in the chitchat that is reflected appropriately in the task-oriented follow-up.
+
+**Step 4: Clarity of Intent**  
+- Ensure the transition sentence does not leave the user’s intent unclear.  
+- The dialogue should not have vague transitions that confuse the context.
+
+**Step 5: Avoid Over-Assuming User Intent**  
+- Evaluate if the transition over-assumes what the user wants to do next.  
+- The system should not act based on inferred intentions without clear user input.
+
+**Step 6: Natural Progression**  
+- Ensure the transition from Chitchat to ToD (or vice versa) feels natural.  
+- The conversation should not feel like a forced switch but should flow seamlessly.
+
+##examples
+**input_1**
+0 [USER] [find_train] I will be traveling to Cambridge next month, and I need to find a train running from Bishop's Stortford heading to Cambridge, can you help me do this please?  
+1 [SYSTEM] There are 70 trains doing that trip, do you have a date and time you would like to go?  
+2 [USER] [find_train] Yes, that would be Monday after 16:30.  
+3 [USER] [chitchat]  By the way, I really enjoy train journeys. There's something so relaxing about watching the scenery go by. Do you have a favorite route?  
+4 [SYSTEM] That's a lovely perspective! Train journeys can be quite scenic, especially in the countryside. I don't have personal favorites, but many people enjoy routes through the Lake District or along the coast.  
+5 [USER] [chitchat] That sounds amazing! I love nature views. I hope the train ride to Cambridge has some nice sights too.  
+6 [SYSTEM] [Transition to ToD] I can check if the route from Bishop's Stortford to Cambridge offers any scenic views. Now, back to your train request. The earliest departure after 16:30 on Monday is TR8925, which will be departing Bishop's Stortford going to Cambridge at 17:29. Would you like to book a ticket?  
+7 [USER] [book_train] Great can I get tickets for 6 people and the reference number?  
+8 [SYSTEM] Booking was successful, the total fee is 60.59 GBP payable at the station. Your reference number is PO9S5J0V. Can I help you with anything else?  
+9 [USER] [find_attraction] Thank you, I also am looking for an attraction called Saint John's College.  
+10 [SYSTEM] Saint John's College is in the centre of town, their address is Saint John's Street. Do you need any other info on them?
+
+**Output_1**
+{{
+ "transition_sentence_evaluation": {{
+    "reasoning": "The transitions from task-oriented dialogue (finding a train) to chitchat and back are smooth, contextually appropriate, and logically consistent, enhancing conversational flow without artificial insertions. The dialogue naturally transitions without over-assuming user intent. The user's interests in scenery naturally influence the system’s offer to check scenic views, reflecting genuine intent revelation.",
+    "score": "Pass"
+  }}
+}}
+
+**input_2**
+0 [USER] [find_train] I will be traveling to Cambridge next month, and I need to find a train running from Bishop's Stortford heading to Cambridge, can you help me do this please?  
+1 [SYSTEM] There are 70 trains doing that trip, do you have a date and time you would like to go?  
+2 [USER] [find_train] Yes, that would be Monday after 16:30.  
+3 [USER] [chitchat]  By the way, I really enjoy train journeys. There's something so relaxing about watching the scenery go by. Do you have a favorite route?  
+4 [SYSTEM] That's a lovely perspective! Train journeys can be quite scenic, especially in the countryside. I don't have personal favorites.
+5 [USER] [chitchat] I love nature views. I hope the train ride to Cambridge has some nice sights too.  
+6 [SYSTEM] [Transition to ToD] I can check if the route from Bishop's Stortford to Cambridge offers any scenic views. Now, back to your train request. The earliest departure after 13:30 on Monday is TR5725, which will be departing Bishop's Stortford going to Cambridge at 14:26. Would you like to book a tickets for 6 people?  
+7 [USER] [find_train] can I get tickets for 6 people and the reference number?  
+8 [SYSTEM] Booking was successful, the total fee is 60.59 GBP payable at the station. Your reference number is PO9S5J0V. Can I help you with anything else?  
+9 [USER] [find_attraction] Thank you, I also am looking for an attraction called Saint John's College.  
+10 [SYSTEM] Saint John's College is in the centre of town, their address is Saint John's Street. Do you need any other info on them?
+
+**Output_2**
+
+{{
+  "transition_sentence_evaluation": {{
+    "reasoning": "The system incorrectly transitions to task-oriented dialogue by providing train details for 13:30 and 14:26, despite the user explicitly requesting times after 16:30. This breaks logical consistency and coherence. The system over-assumes the user's intent by proposing an earlier booking time and automatically suggesting tickets for 6 people without prior confirmation from the user, not accurately reflecting the user's explicitly stated preferences.",
+    "score": "Fail"
+  }}
+}}
+
+Return output in this strict JSON format (no extra text):
+{{
+  "transition_sentence_evaluation":{{
+      "reasoning": "reasoning",
+      "score": <Pass or Fail>"
+  }}
+}}

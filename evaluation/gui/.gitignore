@@ -1,0 +1,4 @@
+.env
+BAK_*
+*.nohup.out
+

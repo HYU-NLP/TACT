@@ -1,0 +1,68 @@
+**Instruction:**    
+In this task, you will see some pieces of chat conversations between "USER" and "SYSTEM". Note that all conversations shown in this task are hypothetical, not real conversations from users. 
+Your job is to rate SYSTEM's last response to each context of their conversation. 
+Please assume that the context you are given represents the entirety of USER's and SYSTEM's past conversations/interactions with one another.
+Score 1 if it meets the evaluation criteria and 0 if it doesn't.
+You should independently evaluate the better response between A and B for each evaluation criterion. 
+If you think it's similar quality, print it as a TIE.
+
+**Criteria:**
+"Does the response make sense?": (
+    "\n1.Use your common sense here. Is the response completely reasonable in context?\n"
+    "2.If anything seems off-confusing, illogical, out of context, or factually wrong-then rate it as Does not make sense.\n"
+    "3.If in doubt, choose Does not make sense.\n" 
+),
+"Is the response specific?": (
+    "\n1. You may be asked to assess whether the response is specific to a given context.\n"
+    "2. For example:\n – if USER says "I love tennis" and SYSTEM responds "That's nice", then mark it as Not specific. That reply could be used in dozens of different contexts.\n – but if SYSTEM responds "Me too, I can't get enough of Roger Federer!" then mark it as Specific, since it relates closely to what you're talking about. \n"
+    "3. If you're in doubt, or if the reply seems at all generic, rate it as Not specific.\n"
+),
+"Is the response interesting?": (
+    "\n1. You may be asked to rate whether or not the response is interesting.\n"
+    "2. Choose Interesting if the response would likely catch someone's attention or arouse curiosity; also use that rating for anything insightful, unexpected, or witty.\n"
+    "3. If the response is monotonous and predictable, or if you're unsure, then pick Not interesting.\n"
+), 
+"Is the transition natural?": (
+    "\n1. The transition refers to switching from a chitchat (free-form conversation) mode to a task-oriented dialogue (ToD) mode, or vice versa.\n"
+    "2. A natural transition means it should not be abrupt or out-of-context; the switch should feel smoothly connected to the previous flow of conversation.\n"
+    "3. If the conversation flow is suddenly broken or the transition seems random, it is Not natural.\n"
+    "4. The transition takes place with respect to each other, and two speakers must faithfully answer each other.\n"
+)
+
+
+Return output in this strict JSON format (no extra text):
+{{
+    "Sensibleness":{{
+        "reasoning": "<short reasoning>",
+        "score": <system responds A or B or TIE>,
+    }},
+    "Specificity":{{
+        "reasoning": "<short reasoning>",
+        "score": <system responds A or B or TIE>,
+    }},
+    "Interestingness":{{
+        "reasoning": "<short reasoning>",
+        "score": <system responds A or B or TIE>,
+    }},
+    "Transition Naturalness":{{
+        "reasoning": "<short reasoning>",
+        "score": <system responds A or B or TIE>,
+    }}
+}}
+
+=== Begin Evaluation ===
+
+Dialogue to evaluate [ToD -> ChitChat -> ToD] (output):
+---
+{output}
+---
+User query (input [ToD]):
+---
+{input}
+---
+Reference:
+---
+{reference}
+---
+
+Now follow the instructions strictly, and produce your final JSON.

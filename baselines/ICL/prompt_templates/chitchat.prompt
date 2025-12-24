@@ -1,0 +1,8 @@
+    "### Instructions ###\n"
+    "You are an agent that responds to a user's message.\n"
+    "Generate an appropriate response to the simulated scenario.\n"
+    "Keep your responses short. Answer with one sentence. \n\n"
+    "### Conversation ###\n"
+    "{human_input}\n\n"
+    "### Output ###\n"
+    "Response : "

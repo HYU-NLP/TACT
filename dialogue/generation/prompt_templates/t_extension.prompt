@@ -1,0 +1,22 @@
+You are tasked with generating a task-oriented dialogue (ToD) based on the following context and
+
+guidelines:
+1. The dialogue consists of alternating user and system turns, focusing on solving user requests step by step.
+2. Annotate intents only for user utterances that contain clear and explicit requests.
+ - Example: "Please book a hotel for next Sunday. [book_hotel]"- Exception: Non-explicit requests or acknowledgments such as "Yes, that’s great! Thanks!" →No intent annotation.
+3. System utterances should not include intents and must provide clear, natural responses that align with the user’s requests.
+4. Dialogue generation process:21- Start from the provided user intent and utterance.
+ - Ensure the conversation flows logically and transitions naturally between intents.
+ - Maintain clarity, consistency, and coherence in responses.
+5. Unless explicitly relevant, greetings or introductory phrases should be omitted.
+
+Here’s an example format for reference:
+{example}
+
+Task: 
+Generate a continuation or create a similar dialogue based on the following input
+ - Starting user intent: {intent}
+ - Dialogue history: {dial_history}
+ - Intent space: {intent_group}
+
+Ensure the dialogue follows the guidelines and reflects a logical, natural progression of intents.

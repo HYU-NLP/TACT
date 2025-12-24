@@ -1,0 +1,60 @@
+##Task Description
+This augmented dataset is named TACT.
+The TACT (TOD-And-Chitchat Transition) dataset was augmented to train dialogue models that can naturally and proactively handle transitions between task-oriented dialogue (TOD) and chitchat, reflecting the fluid nature of real-world conversations. 
+Unlike existing datasets such as MultiWOZ, FusedChat, or InterfereChat—which contain limited or artificial mode transitions—TACT introduces diverse and realistic transition patterns, including both user- and agent-initiated switches. 
+It also emphasizes recovery from interruptions and allows user preferences expressed during chitchat to influence subsequent task responses. 
+By combining broader intent coverage (e.g., via SLURP) and seamless integration of dialogue modes, TACT aims to build more context-aware and human-like conversational agents.
+
+
+##Evaluation Criteria
+**You are an evaluator reviewing a dialogue between a user and a system. Each user utterance is annotated with an intent tag. Your task is to evaluate whether the assigned intent tag for each user utterance is appropriate and accurate.**
+- Consider the meaning of each user utterance in context.
+- Assess whether the annotated intent correctly reflects what the user is trying to do or ask.
+- Refer to the list of candidate intents to determine correctness.
+- Provide reasoning for each evaluation to support your decision.
+
+##Notes
+- An intent is considered accurate if it clearly aligns with the user's intent in that turn.
+- Mark each evaluation as either pass (if the intent is correct) or fail (if the intent is incorrect or ambiguous).
+
+**candidate_intent**
+{candidate_intent}, chitchat
+
+##input_output_example
+**input_example**
+8 [USER] [book_restaurant] I am interested in making a reservation for 6 people at 18:00 on Saturday at a moderately priced restaurant.
+9 [SYSTEM] Sounds like you have a fun evening planned, let me make sure we have the right place for you all. Any preference on price range?
+10 [USER] [book_restaurant] I would like a moderately priced restaurant please.
+11 [SYSTEM] I have booked you successfully at Jinling Noodle Bar on Saturday at 18:00. Your reference number is 2MOF0BGV. Is there anything else I could help you with?
+12 [USER] [book_train] I also want a train to go to Stansted airport.
+
+**output_example**
+[
+  {{
+    "turn": 8,
+    "speaker": "USER",
+    "intents": [
+      "book_restaurant"
+    ],
+    "reasoning": "USER is asking SYSTEM to make a restaurant reservation.",
+    "evaluation": "pass"
+  }},
+  {{
+    "turn": 10,
+    "speaker": "USER",
+    "intents": [
+      "book_restaurant"
+    ],
+    "reasoning": "USER is giving details about a restaurant reservation.",
+    "evaluation": "pass"
+  }},
+  {{
+    "turn": 12,
+    "speaker": "USER",
+    "intents": [
+      "book_train"
+    ],
+    "reasoning": "It's hard to tell from the information that they also want a train to Stansted Airport that they want a reservation. It makes more sense to think of it as looking for train information.",
+    "evaluation": "Fail"
+  }}
+]

@@ -1,0 +1,38 @@
+Instruction:
+You are given a MultiWOZ-style conversation that primarily aims to complete a specific user request(e.g., finding or booking a hotel, booking a train, etc.).  Your task is to insert user chit-chat in a way that feels natural and non-intrusive—like a side remark about personal preferences or mild curiosities weak-related to the ongoing task.
+
+This chit-chat should:
+• Not be framed as an entirely new request (i.e., no large detours from the main goal).
+• Not overshadow the main task-oriented dialogue (ToD).
+• Still offer extra insights or preferences that the system can leverage to provide a slightly better or more personalized solution.
+
+Guidelines:
+1. One chit-chat block should consist of at least four outputs (User ×2, System ×2).
+2. In at least one chit-chat turn, the user must reveal a preference or curiosity regarding the task context (e.g., “I like places with a quiet lounge” or “I wonder if there’s a nice bakery nearby”).
+3. The system should acknowledge or briefly elaborate on at least one of these chit-chat turns, maintaining a light and relevant tone.
+4. After the chit-chat block, the system must use the newly revealed user preference(s) in subsequent ToD steps—demonstrating that the side remark influenced the final recommendation or solution.
+5. The conversation must end on a system turn; there should be no user turn following the system’s final message.
+6. The original order of the conversation’s existing turns must remain intact. Insert the new[chitchat] turns at appropriate points within the conversation.
+7. Transition sentences must appear both before and after the inserted chit-chat block. In a ToD-to-Chat transition, the user initiates the change; in a Chat-to-ToD transition, the system initiates the change and includes the [Transition to ToD] token.
+8. Each transition sentence should facilitate a natural flow between the dialogue segments.
+9. When transitioning from chit-chat to ToD, the sentence must clearly indicate the change by inserting the [Transition to ToD] token.
+
+Format Requirements:
+Each turn in the conversation should adhere to the following format:
+"turn_number  [USER or SYSTEM]  [INTENT or none] utterance“
+Where:
+• turn_number: A consecutive integer (0, 1, 2, . . . ).
+• [USER] or [SYSTEM]: Identifies the speaker.
+• [INTENT or none]: For user turns, this might include labels like [find_restaurant] or[book_hotel]; chit-chat turns should be labeled [chitchat] (or [none] if no intent is as-signed).
+• utterance: The actual textual content of the turn.
+
+Key Requirements for Reflection in ToD:
+1. Acknowledgment and Connection: Preferences or curiosities revealed during chit-chat must influence subsequent task-oriented dialogue. This should appear as direct references (e.g., “I found a hotel with a quiet lounge, as you mentioned liking calm spaces”) or adapted solutions.
+2. Enhanced Recommendations: The chit-chat should serve to enhance the personalization of the system’s recommendations, offering an additional layer of user-oriented refinement.
+3. Natural Flow: Ensure any off-topic remarks remain only weakly related to the main task. Transitions should smoothly reconnect the chit-chat insights to the ongoing task-oriented dialogue.
+
+Example: 
+{few-shot examples}
+
+Input: 
+{input dialogue}

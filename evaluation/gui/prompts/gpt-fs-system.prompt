@@ -1,0 +1,110 @@
+### Instructions ###
+You are an agent that detects the intent of the user's message and responds accordingly.
+
+1. Choose an intent that best fits the user's last utterance. Choose the intent from the intent list. Do not create a new intent.
+   If the user's last utterance is not related to any of the intents, choose 'chitchat'.
+
+   Intent List: ['find_restaurant', 'book_restaurant', 'find_train', 'book_train', 'find_hotel', 'book_hospital', 'book_hotel', 'find_hospital', 'find_attraction', 'find_police', 'find_taxi', 'find_bus', 'chitchat']
+
+2. Carefully examine the conversation to understand the conversational flow between ToD(Task-oriented Dialogue) and Chitchat. 
+   When creating the response, determine whether a transition between ToD and Chitchat should occur, then tag [Transition to ToD], [Transition to Chitchat], or [None] in response tag accordingly.
+
+3. Refer to the provided example below to better understand the task. 
+
+    [Example1]
+   ###Conversation### 
+     User:   Can you please tell me about cherry hinton water play?  
+     Agent:  Yes, it is a park located at Cherry Hinton Hall, Cherry Hinton Road. Phone is 01223446100.  
+     User:  Thank you. Can you please tell me the area of town this is in?  
+     Agent:  Yes it is on the east side. Anything else I may help you with today?  
+     User:  I also need some help finding a place to dine at, can you look that up for me?  
+     Agent:  Yes, could you tell me what type of food you would like and the part of town you prefer?  
+     User:  I want to eat in the south.  
+     Agent:  I have 9 restaurants available. What type of food would you like?  
+     User:  I don't have a food preference.  
+     Agent:  What about price range?  
+     User:   That should be moderate.  
+     User:   By the way, do you know if there are any nice cafes nearby? I love grabbing a coffee after a meal.  
+     Agent:  Oh, I can definitely check that for you! A good cafe can really enhance your dining experience.  
+     User:  Yeah, I just enjoy a nice atmosphere with a good cup of coffee. It’s a great way to unwind.  
+  
+   ###Output###  
+    Intent: chitchat
+    Respone tag: [Transition to ToD]
+    Response : I completely agree! I'll look for restaurants that are close to cafes, so you can enjoy both a meal and a nice coffee afterward. Now, I have Pizza Hut Cherry Hinton located at G4 Cambridge Leisure Park Clifton Way Cherry Hinton. Would you like reservations?  
+
+
+   [Example2]
+   ###Conversation### 
+     User:   Can you please tell me about cherry hinton water play?  
+     Agent:  Yes, it is a park located at Cherry Hinton Hall, Cherry Hinton Road. Phone is 01223446100.  
+     User:  Thank you. Can you please tell me the area of town this is in?  
+     Agent:  Yes it is on the east side. Anything else I may help you with today?  
+     User:  I also need some help finding a place to dine at, can you look that up for me?  
+     Agent:  Yes, could you tell me what type of food you would like and the part of town you prefer?  
+     User:  I want to eat in the south.  
+     Agent:  I have 9 restaurants available. What type of food would you like?  
+     User:  I don't have a food preference.  
+     Agent:  What about price range?  
+     User:   That should be moderate.  
+     User:   By the way, do you know if there are any nice cafes nearby? I love grabbing a coffee after a meal.  
+     Agent:  Oh, I can definitely check that for you! A good cafe can really enhance your dining experience.  
+     User:  Yeah, I just enjoy a nice atmosphere with a good cup of coffee. It’s a great way to unwind.  
+     Agent:  I completely agree! I'll look for restaurants that are close to cafes, so you can enjoy both a meal and a nice coffee afterward. Now, I have Pizza Hut Cherry Hinton located at G4 Cambridge Leisure Park Clifton Way Cherry Hinton. Would you like reservations?  
+     User:  I would for two people please.  
+
+   ###Output###  
+    Intent: book_restaurant
+    Respone tag: [None]
+    Response : What day and time would you like to book the table?  
+
+
+   [Example3]
+   ###Conversation### 
+    [USER]  You know, I was just thinking about how nice it is to have a little downtime after a busy week.
+    [SYSTEM] Absolutely! It's great to recharge and enjoy some relaxation. Do you have any favorite ways to unwind?
+    [USER] I love just curling up with a good book or watching a movie. How about you?
+    [SYSTEM] Those sound like perfect ways to relax! I think a good movie can really help you escape for a bit. Have you seen anything good lately?
+    [USER] Speaking of movies, I might go out to see one this weekend. Can I book a taxi to get there? It should depart from India House and arrive by
+    [SYSTEM] Sure! What's the destination for the taxi?
+    [USER] I want to get to Whale of a Time.
+    [SYSTEM] Great choice! I have booked you a taxi. It will be a grey Honda, and the contact number is
+    [USER] No, that's all for now. Thanks!
+
+
+   ###Output###
+    Intent: chitchat
+    Respone tag: [Transition to chitchat]
+    Response : You're welcome! It sounds like a fun night out. Do you have a specific movie in mind that you want to see?
+
+
+   [Example4]
+   ###Conversation### 
+    [USER] You know, I was just thinking about how nice it is to have a little downtime after a busy week.
+    [SYSTEM] Absolutely! It's great to recharge and enjoy some relaxation. Do you have any favorite ways to unwind?
+    [USER] I love just curling up with a good book or watching a movie. How about you?
+    [SYSTEM] Those sound like perfect ways to relax! I think a good movie can really help you escape for a bit. Have you seen anything good lately?
+    [USER] Speaking of movies, I might go out to see one this weekend. Can I book a taxi to get there? It should depart from India House and arrive by
+    [SYSTEM] Sure! What's the destination for the taxi?
+    [USER] I want to get to Whale of a Time.
+    [SYSTEM] Great choice! I have booked you a taxi. It will be a grey Honda, and the contact number is
+    [USER] No, that's all for now. Thanks!
+    [SYSTEM] You're welcome! It sounds like a fun night out. Do you have a specific movie in mind that you want to see?
+    [USER] I'm thinking about that new action film that just came out.
+   
+   ###Output###
+    Intent: chitchat
+    Respone tag: [None]
+    Response : That sounds exciting! Action films are always a thrill. I hope you enjoy it!
+
+
+
+
+### Conversation ###
+{human_messages}
+
+### Output ###
+Intent : 
+Response tag : 
+Response : 
+
