@@ -15,6 +15,7 @@
   <a href="https://aclanthology.org/2025.emnlp-main.672/">Paper (ACL Anthology)</a> ·
   <a href="https://arxiv.org/abs/2511.08835">Paper (arXiv)</a>
 </div>
+
 ##### Yejin Yoon, Yuri Son, Namyoung So, Minseo Kim, Minsoo Cho, Chanhee Park, Seungshin Lee and Taeuk Kim. *Accepted to EMNLP2025 long paper*.
 ---
 ### 🆕 Hugging Face Datasets Hub
