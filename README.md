@@ -8,7 +8,7 @@
   <br>
 </div>
 
-#### Official Repository for "Beyond Task-Oriented and Chitchat Dialogues: Proactive and Transition-Aware Conversational Agents." [[Paper(ACL Anthology)]](https://aclanthology.org/2025.emnlp-main.672/) [[Paper(arXiv)]](https://arxiv.org/abs/2511.08835)
+#### Official Repository for "Beyond Task-Oriented and Chitchat Dialogues: Proactive and Transition-Aware Conversational Agents." [[Project Page]](https://still-with-you.github.io/tact-page/) [[Paper(ACL Anthology)]](https://aclanthology.org/2025.emnlp-main.672/) [[Paper(arXiv)]](https://arxiv.org/abs/2511.08835)
 ##### Yejin Yoon, Yuri Son, Namyoung So, Minseo Kim, Minsoo Cho, Chanhee Park, Seungshin Lee and Taeuk Kim. *Accepted to EMNLP2025 long paper*.
 ---
 ### 🆕 Hugging Face Datasets Hub
